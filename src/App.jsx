@@ -1,21 +1,20 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-
-fetch("https://podcast-api.netlify.app")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  });
+import React, { useState, useEffect } from "react";
 
 function App() {
-  return (
-    <>
-      <div>
-        <h1>This is meant to appear with the list</h1>
-        <p></p>
-      </div>
-    </>
-  );
+  const [podcastData, setPodcastData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("https://podcast-api.netlify.app");
+      const data = await response.json();
+
+      setPodcastData(data);
+    }
+    fetchData();
+  }, []);
+
+  return <></>;
 }
 
 export default App;
