@@ -1,11 +1,19 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-export function API() {}
+
+fetch("https://podcast-api.netlify.app")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  });
 
 function App() {
   return (
     <>
-      <h1>DJS03</h1>
+      <div>
+        <h1>This is meant to appear with the list</h1>
+        <p></p>
+      </div>
     </>
   );
 }
