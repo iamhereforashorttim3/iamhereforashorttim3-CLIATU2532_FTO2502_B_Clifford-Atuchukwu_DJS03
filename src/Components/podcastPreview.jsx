@@ -1,3 +1,8 @@
+/**
+ * This component is meant to display the important details of the podcasts
+ * @param {*} param0
+ * @returns A card that displays the podcast preview
+ */
 export default function PodcastPreviews({ podcasts }) {
   return (
     <>
