@@ -1,5 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import { genres } from "./Components/data.js";
+import PodcastPreviews from "./Components/podcastPreview.jsx";
 
 function App() {
   const [podcastData, setPodcastData] = useState([]);
@@ -14,7 +16,30 @@ function App() {
     fetchData();
   }, []);
 
-  return <></>;
+  const getGenres = (genreIds) => {
+    return genreIds.map((id) => {
+      const found = genres.find((genre) => genre.id === id);
+      return found ? found.title : "Unknown";
+    });
+  };
+
+  return (
+    <div>
+      {podcastData.map((podcast) => (
+        <PodcastPreviews
+          key={podcast.id}
+          podcasts={{
+            img: podcast.image,
+            title: podcast.title,
+            description: podcast.description,
+            seasons: podcast.seasons,
+            genres: getGenres(podcast.genres),
+            updated: podcast.updated,
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default App;
