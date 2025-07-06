@@ -110,7 +110,7 @@ body {
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.3rem 0.6rem;
-  border-radius: 999px;
+  border-radius: 100%;
   white-space: nowrap;
 }
 
@@ -118,4 +118,20 @@ body {
   color: white;
   margin: 10px;
   margin-bottom: 10px;
+}
+
+.status {
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid #66b2ff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 0.8s linear infinite;
+  margin: 4rem auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
