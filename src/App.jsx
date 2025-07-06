@@ -25,7 +25,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="podcast-grid">
       {podcastData.map((podcast) => (
         <PodcastPreviews
           key={podcast.id}
