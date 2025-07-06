@@ -3,12 +3,20 @@ import { useState, useEffect } from "react";
 import { genres } from "./Components/data.js";
 import PodcastPreviews from "./Components/podcastPreview.jsx";
 import { formatDistanceToNow } from "date-fns";
-
+/**
+ *
+ * @returns {Jsx Element} It returns the loading indicator, error messages, and the list of the podcast previews
+ */
 function App() {
   const [podcastData, setPodcastData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  /**
+   * @async
+   * @function fetchData
+   * @throws new error if the response is not ok
+   */
   useEffect(() => {
     async function fetchData() {
       try {
@@ -31,7 +39,11 @@ function App() {
     }
     fetchData();
   }, []);
-
+  /**
+   * @function getGenres
+   * @param {number[]} genreIds - An array of the genre IDs from the podcast data
+   * @returns {string[]} An array of genre titles, returns "unknown" if there's no match
+   */
   const getGenres = (genreIds) => {
     return genreIds.map((id) => {
       const found = genres.find((genre) => genre.id === id);
