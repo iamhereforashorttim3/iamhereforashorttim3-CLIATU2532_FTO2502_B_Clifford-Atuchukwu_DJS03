@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { genres } from "./Components/data.js";
 import PodcastPreviews from "./Components/podcastPreview.jsx";
+import { formatDistanceToNow } from "date-fns";
 
 function App() {
   const [podcastData, setPodcastData] = useState([]);
@@ -34,7 +35,9 @@ function App() {
             description: podcast.description,
             seasons: podcast.seasons,
             genres: getGenres(podcast.genres),
-            updated: podcast.updated,
+            updated: formatDistanceToNow(new Date(podcast.updated), {
+              addSuffix: true,
+            }),
           }}
         />
       ))}
